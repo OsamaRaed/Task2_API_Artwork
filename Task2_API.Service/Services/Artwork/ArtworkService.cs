@@ -7,7 +7,7 @@ using Task2_API.Data;
 
 namespace Task2_API.Service.Services.Artwork
 {
-    public class ArtworkService
+    public class ArtworkService : IArtworkService
     {
         private readonly ApplicationDbContext _DB;
 

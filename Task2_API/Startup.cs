@@ -12,6 +12,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Task2_API.Data;
+using Task2_API.Service.Services.Category;
+using Task2_API.Service.Services.Artwork;
+using Task2_API.Service.Services.Subscription;
 
 namespace Task2_API
 {
@@ -34,8 +37,14 @@ namespace Task2_API
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
             services.AddSwaggerGen();
+
+            services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IArtworkService, ArtworkService>();
+            services.AddTransient<ISubscription, Subscription>();
+
+            services.AddControllersWithViews();
+
 
         }
 

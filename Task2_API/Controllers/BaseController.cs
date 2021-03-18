@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Task2_API.Core.ViewModels;
 
 namespace Task2_API.Controllers
 {
     [Route("api/[controller]/[action]")]
+    //[ApiController]
 
     public class BaseController : Controller
     {
