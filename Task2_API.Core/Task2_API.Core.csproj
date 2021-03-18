@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Task2.Data\Task2_API.Data.csproj" />
+  </ItemGroup>
+
 </Project>
