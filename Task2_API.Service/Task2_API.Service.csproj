@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Task2.Data\Task2_API.Data.csproj" />
+    <ProjectReference Include="..\Task2_API.Core\Task2_API.Core.csproj" />
   </ItemGroup>
 
 </Project>
