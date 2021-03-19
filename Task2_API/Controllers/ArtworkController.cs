@@ -47,7 +47,7 @@ namespace Task2_API.Controllers
             return Ok(GetRespons());
         }
         // Delete: ArtworkController/Delete/5
-
+        [HttpDelete]
         public IActionResult Delete(int id)
         {
             _artworkService.Delete(id);

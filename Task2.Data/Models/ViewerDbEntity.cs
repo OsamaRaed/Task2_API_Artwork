@@ -7,10 +7,8 @@ namespace Task2_API.Data.Models
     public class ViewerDbEntity : BaseEntity 
     {
         [Required]
-
         public string Name { get; set; }
         [Required]
-
         public string Email{ get; set; }
         public DateTime RegistryDate { get; set; }
         public SubscriptionDbEntity Subscription { get; set; }

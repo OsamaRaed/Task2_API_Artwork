@@ -5,32 +5,32 @@ using Task2_API.Core.DTO;
 using Task2_API.Core.ViewModel;
 using Task2_API.Data;
 
-namespace Task2_API.Service.Services.Category
+namespace Task2_API.Service.Services.Subscription
 {
-    public class CategoryService : ICategoryService
+    public class SubscriptionService : ISubscriptionService
     {
         private readonly ApplicationDbContext _DB;
-        public CategoryService(ApplicationDbContext DB)
+        public SubscriptionService(ApplicationDbContext DB)
         {
             _DB = DB;
         }
 
-        public List<CategoryVM> Index()
+        public List<SubscriptionVM> Index()
         {
             return null;
         }
 
-        public CategoryVM Details(int id)
+        public SubscriptionVM Details(int id)
         {
             return null;
         }
 
-        public void Create(CreateCategoryDTO dTO)
+        public void Create(CreateSubscriptionDTO dTO)
         {
 
         }
 
-        public void Update(UpdateCategoryDTO dTO)
+        public void Update(UpdateSubscriptionDTO dTO)
         {
 
         }

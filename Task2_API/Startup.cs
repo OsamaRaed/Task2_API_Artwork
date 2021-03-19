@@ -15,6 +15,7 @@ using Task2_API.Data;
 using Task2_API.Service.Services.Category;
 using Task2_API.Service.Services.Artwork;
 using Task2_API.Service.Services.Subscription;
+using Task2_API.Service.Services.Viewer;
 
 namespace Task2_API
 {
@@ -41,7 +42,8 @@ namespace Task2_API
 
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IArtworkService, ArtworkService>();
-            services.AddTransient<ISubscription, Subscription>();
+            services.AddTransient<ISubscriptionService, SubscriptionService>();
+            services.AddTransient<IViewerService, ViewerService>();
 
             services.AddControllersWithViews();
 
@@ -66,7 +68,11 @@ namespace Task2_API
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Task2 API");
+            });
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -77,11 +83,7 @@ namespace Task2_API
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CMS API");
-            });
+
         }
     }
 }

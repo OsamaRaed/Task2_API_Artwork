@@ -4,7 +4,6 @@ using Task2_API.Core.ViewModels;
 namespace Task2_API.Controllers
 {
     [Route("api/[controller]/[action]")]
-    //[ApiController]
 
     public class BaseController : Controller
     {
