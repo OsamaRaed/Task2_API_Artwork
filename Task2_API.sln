@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task2_API.Data", "Task2.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task2_API.Core", "Task2_API.Core\Task2_API.Core.csproj", "{3F24038C-0162-4097-A078-2DC33322F148}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task2_API.Service", "Task2_API.Service\Task2_API.Service.csproj", "{392CD4F9-3095-45A8-BD80-3BE4B7A65353}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task2_API.Service", "Task2_API.Service\Task2_API.Service.csproj", "{392CD4F9-3095-45A8-BD80-3BE4B7A65353}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
