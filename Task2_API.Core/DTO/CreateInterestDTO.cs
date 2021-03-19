@@ -6,6 +6,8 @@ namespace Task2_API.Core.DTO
     public class CreateInterestDTO
     {
         public int CategoryId { get; set; }
+        public List<int> viewers { get; set; }
+
 
     }
 }

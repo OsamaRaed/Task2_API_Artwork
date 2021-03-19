@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Task2_API.Core.DTO;
 using Task2_API.Core.ViewModel;
@@ -18,23 +20,48 @@ namespace Task2_API.Service.Services.Viewer
 
         public List<ViewerVM> Index()
         {
-            return null;
+            return _DB.Viewers.Include(x => x.Subscription).Include(x => x.ArtworkViews)
+                .ThenInclude(x => x.Artwork).Include(x => x.ViewerIntrests)
+                .ThenInclude(x => x.Interest).Select(x => new ViewerVM(x)).ToList();
         }
 
         public ViewerVM Details(int id)
-        {
-            return null;
+        { 
+            return new ViewerVM(_DB.Viewers.Include(x => x.Subscription).Include(x => x.ArtworkViews)
+              .ThenInclude(x => x.Artwork).Include(x => x.ViewerIntrests)
+              .ThenInclude(x => x.Interest).SingleOrDefault(x => x.Id == id));
         }
 
         public void Create(CreateViewerDTO dto)
         {
-            var viewer = new ViewerDbEntity();
-            viewer.Name = dto.Name;
-            viewer.Email = dto.Email;
-            viewer.RegistryDate = dto.RegistryDate;
-            viewer.CreatedAt = DateTime.Now;
-            _DB.Viewers.Add(viewer);
+            var Createviewer = new ViewerDbEntity()
+            {
+                Name = dto.Name,
+                RegistryDate = dto.RegistryDate,
+                CreatedAt = DateTime.Now
+            };
+            _DB.Viewers.Add(Createviewer);
             _DB.SaveChanges();
+            foreach(int interest in dto.ViewerIntrests)
+            {
+                var ViewerIntrest = new ViewerInterestDbEntity()
+                {
+                    ViewerId = interest,
+                    InterestId = Createviewer.Id
+                };
+                _DB.ViewerInterests.Add(ViewerIntrest);
+                _DB.SaveChanges();
+            }
+            foreach (int artwork in dto.ViewerIntrests)
+            {
+                var artworkView = new ArtworkViewDbEntity()
+                {
+                    ArtworkId = artwork,
+                    ViewerId = Createviewer.Id
+                };
+                _DB.ArtworkViews.Add(artworkView);
+                _DB.SaveChanges();
+            }
         }
 
         public void Update(UpdateViewerDTO dTO)
@@ -43,7 +70,10 @@ namespace Task2_API.Service.Services.Viewer
         }
         public void Delete(int id)
         {
-
+            var viewer = _DB.Viewers.Find(id);
+            viewer.IsDelete = true;
+            _DB.Viewers.Update(viewer);
+            _DB.SaveChanges();
         }
     }
 }
