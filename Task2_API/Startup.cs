@@ -16,6 +16,7 @@ using Task2_API.Service.Services.Category;
 using Task2_API.Service.Services.Artwork;
 using Task2_API.Service.Services.Subscription;
 using Task2_API.Service.Services.Viewer;
+using Task2_API.Service.Services.Interest;
 
 namespace Task2_API
 {
@@ -44,6 +45,7 @@ namespace Task2_API
             services.AddTransient<IArtworkService, ArtworkService>();
             services.AddTransient<ISubscriptionService, SubscriptionService>();
             services.AddTransient<IViewerService, ViewerService>();
+            services.AddTransient<IInterestService, InterestService>();
 
             services.AddControllersWithViews();
 

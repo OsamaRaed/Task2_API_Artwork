@@ -7,7 +7,7 @@ namespace Task2_API.Core.DTO
     {
         public int CategoryId { get; set; }
         public List<int> viewers { get; set; }
-
+        
 
     }
 }
