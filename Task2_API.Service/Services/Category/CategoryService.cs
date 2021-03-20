@@ -7,7 +7,7 @@ using Task2_API.Core.DTO;
 using Task2_API.Core.ViewModel;
 using Task2_API.Data;
 using Task2_API.Data.Models;
-
+// NOT Ready
 namespace Task2_API.Service.Services.Category
 {
     public class CategoryService : ICategoryService
@@ -34,7 +34,18 @@ namespace Task2_API.Service.Services.Category
             var Category = new CategoryDbEntity()
             {
                 Name = dTO.Name
+
             };
+            //foreach (int artwork in dto.ViewerIntrests)
+            //{
+            //    var artworkView = new ArtworkViewDbEntity()
+            //    {
+            //        ArtworkId = artwork,
+            //        ViewerId = Createviewer.Id
+            //    };
+            //    _DB.ArtworkViews.Add(artworkView);
+            //    _DB.SaveChanges();
+            //}
             _DB.Categories.Add(Category);
             _DB.SaveChanges();
 
@@ -42,10 +53,10 @@ namespace Task2_API.Service.Services.Category
 
         public void Update(UpdateCategoryDTO dTO)
         {
-            var Category = _DB.Categories.Find(dTO.Id);
-            Category.Name = dTO.Name;
-            _DB.Categories.Update(Category);
-            _DB.SaveChanges();
+            //var Category = _DB.Categories.Find(dTO.Id);
+            //Category.Name = dTO.Name;
+            //_DB.Categories.Update(Category);
+            //_DB.SaveChanges();
         }
         public void Delete(int id)
         {

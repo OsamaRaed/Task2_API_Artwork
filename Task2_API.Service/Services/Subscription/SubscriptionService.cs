@@ -40,7 +40,7 @@ namespace Task2_API.Service.Services.Subscription
             return new SubscriptionVM(_DB.Subscriptions
                 .Include(x => x.Viewer).SingleOrDefault(x => x.Id == id));
         }
-
+            
         public void Create(CreateSubscriptionDTO dTO)
         {
             var subscription = new SubscriptionDbEntity()
@@ -52,6 +52,8 @@ namespace Task2_API.Service.Services.Subscription
                 IsDelete = false,
                 CreatedAt = DateTime.Now
             };
+            _DB.Subscriptions.Add(subscription);
+            _DB.SaveChanges();
         }
 
         public void Update(UpdateSubscriptionDTO dTO)
@@ -63,6 +65,7 @@ namespace Task2_API.Service.Services.Subscription
             var subscription = _DB.Subscriptions.Find(id);
             subscription.IsDelete = true;
             _DB.Subscriptions.Update(subscription);
+            _DB.SaveChanges();
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Task2_API.Core.DTO;
 using Task2_API.Core.ViewModel;
@@ -18,12 +20,14 @@ namespace Task2_API.Service.Services.Artwork
 
         public List<ArtworkVM> Index()
         {
-            return null;
+            return _DB.Artworks.Include(x => x.Category)
+                .Include(x => x.Viewers).Select(x => new ArtworkVM(x)).ToList(); 
         }
 
         public ArtworkVM Details(int id)
         {
-            return null;
+            return new ArtworkVM(_DB.Artworks.Include(x => x.Viewers)
+                .SingleOrDefault(x => x.Id == id));
         }
 
         public void Create(CreateArtworkDTO dTO)
@@ -35,6 +39,7 @@ namespace Task2_API.Service.Services.Artwork
         {
 
         }
+
         public void Delete(int id)
         {
 
