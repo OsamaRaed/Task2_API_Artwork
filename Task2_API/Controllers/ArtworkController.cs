@@ -8,7 +8,7 @@ namespace Task2_API.Controllers
 
     public class ArtworkController : BaseController
     {
-        private IArtworkService _artworkService;
+        private readonly IArtworkService _artworkService;
         public ArtworkController(IArtworkService artworkService)
         {
             _artworkService = artworkService;
